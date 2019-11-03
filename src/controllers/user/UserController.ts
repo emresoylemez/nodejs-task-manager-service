@@ -2,7 +2,6 @@ import fs = require("fs");
 import jwt = require("jsonwebtoken");
 import sha1 = require("sha1");
 
-import { convertToCatalogOutput } from "./helpers";
 import { ISigninInput, ISignupInput, ISignoutInput, IValidateTokenInput, IToken } from "./entities";
 import UserRepository from "../../repositories/user/UserRepository";
 import { BadRequestError, UnprocessableError } from "../../entities/errors";

@@ -16,7 +16,7 @@ export default class UserRepository extends VersionableRepository<IUserModel> {
    */
   public async get(input: IGetInput): Promise<IUserModel> {
     console.debug("UserRepository - get:", JSON.stringify(input));
-    console.debug("emre - get:", JSON.stringify(input));
+
     const passwordHash = sha1(input.password);
     console.info(passwordHash);
     return super.getOne({ username: input.username, password: passwordHash });
