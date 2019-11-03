@@ -28,7 +28,6 @@
     "lint:fix": "yarn lint -- --fix"
   },
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.18.3",
     "compression": "1.7.2",
     "cookie-parser": "1.4.3",
@@ -43,12 +42,11 @@
     "morgan-body": "2.4.5",
     "pjson": "1.0.9",
     "redis": "2.8.0",
-    "sha1": "^1.1.1",
+    "sha1": "1.1.1",
     "swagger-jsdoc": "3.3.0",
     "swagger-ui-express": "3.0.10"
   },
   "devDependencies": {
-    "@types/bcrypt-nodejs": "0.0.30",
     "@types/compression": "0.0.36",
     "@types/cookie-parser": "1.4.1",
     "@types/cors": "2.8.4",
