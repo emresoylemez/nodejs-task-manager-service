@@ -3,8 +3,8 @@ import jwt = require("jsonwebtoken");
 
 import { ICreateInput, ICreateOutput, IGetInput, IGetOutput, IListInput, IListOutput } from "./models";
 import TaskRepository from "../../repositories/task/TaskRepository";
-import { BadRequestError, UnprocessableError } from "../../entities/errors";
-import { UnauthorizedResponse, SuccessResponse } from "../../entities/responses";
+import { BadRequestError, UnprocessableError } from "../../models/errors";
+import { UnauthorizedResponse, SuccessResponse } from "../../models/responses";
 
 class TaskController {
   private taskRepository: TaskRepository;

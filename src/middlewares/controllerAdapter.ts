@@ -1,5 +1,5 @@
-import { APIError, InternalServerError } from "../entities/errors";
-import { SuccessResponse } from "../entities/responses";
+import { APIError, InternalServerError } from "../models/errors";
+import { SuccessResponse } from "../models/responses";
 
 export default function controllerAdapter(controller: any = null, functionName: string = "") {
   return async (req: any, res: any, next: any) => {

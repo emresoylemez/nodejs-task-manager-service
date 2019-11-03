@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import IEntity from "../../entities/IEntity";
+import IEntity from "../../models/IEntity";
 
 export default interface ITaskDocument extends Document, IEntity {
   id: string;

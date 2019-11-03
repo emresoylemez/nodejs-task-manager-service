@@ -1,5 +1,5 @@
 import { EnvVars, StatusCodes } from "../libs/constants";
-import IResponse from "../entities/responses/IResponse";
+import IResponse from "../models/responses/IResponse";
 
 import {
   DuplicateKeyError,
@@ -9,7 +9,7 @@ import {
   NotFoundError,
   ConfigurationError,
   StrapiError
-} from "../entities/errors";
+} from "../models/errors";
 import {
   BadRequestResponse,
   ForbiddenResponse,
@@ -18,10 +18,10 @@ import {
   InternalServerErrorResponse,
   ConfigurationErrorResponse,
   StrapiErrorResponse
-} from "../entities/responses";
+} from "../models/responses";
 
 export default function errorHandler(env: string) {
-  return function (err: any, req: any, res: any, next: any) {
+  return function(err: any, req: any, res: any, next: any) {
     if (env !== EnvVars.TEST) {
       console.error(err);
     }

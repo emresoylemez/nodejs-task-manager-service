@@ -1,7 +1,7 @@
 import { validationResult } from "express-validator/check";
 
-import { UnprocessableError } from "../entities/errors";
-import IError from "../entities/errors/IError";
+import { UnprocessableError } from "../models/errors";
+import IError from "../models/errors/IError";
 
 export default function validationHandler() {
   return (req: any, res: any, next: any) => {
