@@ -33,7 +33,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"aytekin3\",\n    \"password\": \"123\",\n    \"tenantId\": \"XYZ\"\n}",
+					"raw": "{\n    \"username\": \"emre\",\n    \"password\": \"123\",\n    \"tenantId\": \"XYZ\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:10000/api/users/signin",
+					"raw": "localhost:10000/api/users/v1/signin",
 					"host": [
 						"localhost"
 					],
@@ -49,6 +49,7 @@
 					"path": [
 						"api",
 						"users",
+						"v1",
 						"signin"
 					]
 				}
@@ -73,7 +74,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:10000/api/users/validateToken",
+					"raw": "localhost:10000/api/users/v1/validateToken",
 					"host": [
 						"localhost"
 					],
@@ -81,6 +82,7 @@
 					"path": [
 						"api",
 						"users",
+						"v1",
 						"validateToken"
 					]
 				}
@@ -105,7 +107,7 @@
 					}
 				],
 				"url": {
-					"raw": "localhost:10000/api/users/signout",
+					"raw": "localhost:10000/api/users/v1/signout",
 					"host": [
 						"localhost"
 					],
@@ -113,6 +115,7 @@
 					"path": [
 						"api",
 						"users",
+						"v1",
 						"signout"
 					]
 				}
@@ -147,7 +150,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"aytekin3\",\n    \"password\": \"123\",\n    \"tenantId\": \"XYZ\",\n    \"firstName\": \"Emre\",\n    \"lastName\": \"Sylmz\"\n}",
+					"raw": "{\n    \"username\": \"emre\",\n    \"password\": \"123\",\n    \"tenantId\": \"XYZ\",\n    \"firstName\": \"Emre\",\n    \"lastName\": \"Sylmz\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -155,7 +158,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:10000/api/users/signup",
+					"raw": "localhost:10000/api/users/v1/signup",
 					"host": [
 						"localhost"
 					],
@@ -163,6 +166,7 @@
 					"path": [
 						"api",
 						"users",
+						"v1",
 						"signup"
 					]
 				}
