@@ -33,7 +33,7 @@ export default Object.freeze({
   },
   signup: {
     firstName: validations.firstName()
-    //TODO implement rest of the fields
+    // TODO implement rest of the fields
   },
   validateToken: {
     authorization: validations.token()
