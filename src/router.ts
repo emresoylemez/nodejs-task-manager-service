@@ -77,7 +77,7 @@ router.get("/version", (req, res) => {
   });
 });
 
-// mount routes for 
+// mount routes for
 router.use(
   "/users",
   userRouter

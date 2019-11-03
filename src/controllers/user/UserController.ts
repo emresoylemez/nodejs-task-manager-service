@@ -1,5 +1,5 @@
-const fs = require("fs");
-const jwt = require("jsonwebtoken");
+import fs = require("fs");
+import jwt = require("jsonwebtoken");
 
 import { convertToCatalogOutput } from "./helpers";
 import { ISigninInput, ISignupInput, ISignoutInput, IValidateTokenInput, IToken } from "./entities";
@@ -28,7 +28,7 @@ class UserController {
           param: "body",
           value: ""
         }
-      ])
+      ]);
     }
 
     const token = await this.generateToken(user.username, user.tenantId);
@@ -64,7 +64,7 @@ class UserController {
           param: "body",
           value: ""
         }
-      ])
+      ]);
     }
 
     user.accessToken = null;
@@ -124,8 +124,8 @@ class UserController {
   }
 
   private async generateToken(uid: string, tenantId: string) {
-    let privateKey = fs.readFileSync("./private.pem", "utf8");
-    const oneHour = 1000 * 60 * 60
+    const privateKey = fs.readFileSync("./private.pem", "utf8");
+    const oneHour = 1000 * 60 * 60;
     return await jwt.sign({ uid, ext: Date.now() + oneHour, tenantId }, privateKey, { algorithm: "HS256" });
   }
 
@@ -139,7 +139,7 @@ class UserController {
 
   private async verifyToken(token: string): Promise<boolean> {
     try {
-      let privateKey = fs.readFileSync("./private.pem", "utf8");
+      const privateKey = fs.readFileSync("./private.pem", "utf8");
       await jwt.verify(token, privateKey);
     } catch (err) {
       console.error("Invalid token!!!", err);
