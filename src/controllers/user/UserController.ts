@@ -1,5 +1,6 @@
 import fs = require("fs");
 import jwt = require("jsonwebtoken");
+import sha1 = require("sha1");
 
 import { convertToCatalogOutput } from "./helpers";
 import { ISigninInput, ISignupInput, ISignoutInput, IValidateTokenInput, IToken } from "./entities";
@@ -108,10 +109,12 @@ class UserController {
     }
 
     const token = await this.generateToken(body.username, body.tenantId);
+    const passwordHash = sha1(body.password);
+    console.info(passwordHash);
 
     const newUser = await this.userRepository.create({
       username: body.username,
-      password: body.password,
+      password: passwordHash,
       tenantId: body.tenantId,
       firstName: body.firstName,
       lastName: body.lastName,

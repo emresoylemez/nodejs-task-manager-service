@@ -1,4 +1,5 @@
 import { Model } from "mongoose";
+import sha1 = require("sha1");
 
 import { userModel } from "./userModel";
 import IUserModel from "./IUserModel";
@@ -16,8 +17,9 @@ export default class UserRepository extends VersionableRepository<IUserModel> {
   public async get(input: IGetInput): Promise<IUserModel> {
     console.debug("UserRepository - get:", JSON.stringify(input));
     console.debug("emre - get:", JSON.stringify(input));
-
-    return super.getOne({ username: input.username, password: input.password });
+    const passwordHash = sha1(input.password);
+    console.info(passwordHash);
+    return super.getOne({ username: input.username, password: passwordHash });
   }
 
 
