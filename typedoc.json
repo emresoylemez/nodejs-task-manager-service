@@ -1,0 +1,17 @@
+{
+    "emitDecoratorMetadata": true,
+    "excludeExternals": true,
+    "experimentalDecorators": true,
+    "hideGenerator": true,
+    "ignoreCompilerErrors": true,
+    "includeDeclarations": false,
+    "mode": "file",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "out": "./docs",
+    "preserveConstEnums": true,
+    "stripInternal": true,
+    "suppressExcessPropertyErrors": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "ES6"
+}

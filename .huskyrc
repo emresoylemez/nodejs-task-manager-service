@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "pre-commit": "CI=true yarn test && yarn lint && yarn sonarjs",
+    "pre-push": "CI=true yarn test && yarn lint && yarn sonarjs"
+  }
+}
