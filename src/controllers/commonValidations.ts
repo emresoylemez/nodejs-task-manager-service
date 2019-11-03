@@ -1,15 +1,8 @@
+import { RequestLocations } from "../libs/constants";
 import { isValidObjectId, isValidArrayOfIds, isValidArrayOfStrings } from "../libs/utilities";
 
-export enum LocationTypes {
-  body = "body",
-  // cookies="cookies",
-  headers = "headers",
-  params = "params",
-  query = "query"
-}
-
 export const commonValidations = Object.freeze({
-  checkNumber(paramName, locationType = LocationTypes.params, isOptional = true) {
+  checkNumber(paramName, locationType = RequestLocations.params, isOptional = true) {
     return {
       in: [locationType],
       optional: isOptional,
@@ -22,7 +15,7 @@ export const commonValidations = Object.freeze({
       }
     };
   },
-  checkObjectId(paramName, locationType = LocationTypes.params, isOptional = true) {
+  checkObjectId(paramName, locationType = RequestLocations.params, isOptional = true) {
     return {
       in: [locationType],
       optional: isOptional,
@@ -32,7 +25,7 @@ export const commonValidations = Object.freeze({
       }
     };
   },
-  checkObjectIds(paramName, locationType = LocationTypes.body, isOptional = true) {
+  checkObjectIds(paramName, locationType = RequestLocations.body, isOptional = true) {
     return {
       in: [locationType],
       errorMessage: `${paramName} should be an array of ObjectIds!`,
@@ -52,7 +45,7 @@ export const commonValidations = Object.freeze({
       isString: true
     };
   },
-  checkStrings(paramName, locationType = LocationTypes.body, isOptional = true) {
+  checkStrings(paramName, locationType = RequestLocations.body, isOptional = true) {
     return {
       in: [locationType],
       errorMessage: `${paramName} should be an Array of strings!`,

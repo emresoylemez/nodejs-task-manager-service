@@ -1,6 +1,7 @@
 import { Model, Query } from "mongoose";
 
-import { IBaseCreateInput, IVersionableUpdateInput, IBaseUpdateInput } from "../entities";
+import { IBaseCreateInput, IBaseUpdateInput } from "../models";
+import { IVersionableCreateInput, IVersionableUpdateInput } from "./models";
 import { Nullable } from "../../libs/customTypes";
 import BaseRepository from "../BaseRepository";
 import IVersionableDocument from "./IVersionableDocument";
@@ -8,8 +9,8 @@ import { generateObjectId } from "../../libs/utilities";
 import { lean } from "../../libs/utilities";
 
 export default class VersionableRepository<D extends IVersionableDocument> extends BaseRepository<D> {
-  constructor(modelType) {
-    super(modelType);
+  constructor(model) {
+    super(model);
   }
 
   /**
@@ -17,12 +18,12 @@ export default class VersionableRepository<D extends IVersionableDocument> exten
    * @property {string} body.name - The name of record.
    * @returns {Application}
    */
-  public async create(input: IBaseCreateInput): Promise<D> {
+  public async create(input: IVersionableCreateInput): Promise<D> {
     console.debug("VersionableRepository - create:", JSON.stringify(input));
 
     const id = input.id || generateObjectId();
 
-    const model = new this.modelType({
+    const model = new this.model({
       ...input,
       _id: id,
       originalId: id
@@ -62,7 +63,7 @@ export default class VersionableRepository<D extends IVersionableDocument> exten
     const newInstance = Object.assign({}, previous, input);
     newInstance["_id" as string] = generateObjectId();
     delete previous.deletedAt;
-    const model = new this.modelType(newInstance);
+    const model = new this.model(newInstance);
 
     console.debug("Creating new object...");
 
@@ -85,13 +86,12 @@ export default class VersionableRepository<D extends IVersionableDocument> exten
     const newInstance = Object.assign({}, previous, input);
     newInstance["_id" as string] = generateObjectId();
     delete previous.deletedAt;
-    const model = new this.modelType(newInstance);
+    const model = new this.model(newInstance);
 
     console.debug("Creating new object...");
 
     return await model.save();
   }
-
 
   public async delete(originalId: string): Promise<D> {
     console.debug("VersionableRepository - delete:", originalId);
@@ -104,7 +104,7 @@ export default class VersionableRepository<D extends IVersionableDocument> exten
 
     const newId = generateObjectId();
     const newInstance = Object.assign({}, previous, { _id: newId, isSoftDeleted: true });
-    const model = new this.modelType(newInstance);
+    const model = new this.model(newInstance);
 
     return model.save();
   }
@@ -129,7 +129,6 @@ export default class VersionableRepository<D extends IVersionableDocument> exten
     };
 
     return super.getOne(updatedQuery, populate);
-
   }
 
   protected getById(originalId: string, populate?: any | null): Promise<Nullable<D>> {
@@ -144,7 +143,7 @@ export default class VersionableRepository<D extends IVersionableDocument> exten
     return this.getAll({ originalId: { $in: originalIds } });
   }
 
-  public count(conditions: any): Query<number> {
+  public count(conditions: any = {}): Query<number> {
     console.debug("VersionableRepository - count:", JSON.stringify(conditions));
 
     const updatedQuery = {
@@ -157,6 +156,6 @@ export default class VersionableRepository<D extends IVersionableDocument> exten
 
   protected invalidate(originalId: string): Promise<D> {
     const now = new Date();
-    return lean(this.modelType.update({ originalId, deletedAt: null }, { deletedAt: now }));
+    return lean(this.model.update({ originalId, deletedAt: null }, { deletedAt: now }));
   }
 }

@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import userRouter from "./controllers/user/routes";
+import userRouter from "./controllers/task/routes";
 
 import * as appInfo from "pjson";
 /**
@@ -78,9 +78,6 @@ router.get("/version", (req, res) => {
 });
 
 // mount routes for
-router.use(
-  "/users",
-  userRouter
-);
+router.use("/tasks", userRouter);
 
 export default router;

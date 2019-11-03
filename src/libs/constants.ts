@@ -22,9 +22,10 @@ export enum StatusCodes {
   INTERNAL_SERVER_ERROR = 500
 }
 
-export enum Sensitivity {
-  GET = 1,
-  POST = 2,
-  PUT = 2,
-  DELETE = 3
+export enum RequestLocations {
+  body = "body",
+  cookies = "cookies",
+  headers = "headers",
+  params = "params",
+  query = "query"
 }

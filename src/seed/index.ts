@@ -1,24 +1,23 @@
-import { forEachSync } from "../libs/utilities";
-import users from "./users";
-import UserRepository from "../repositories/user/UserRepository";
+import tasks from "./tasks";
+import TaskRepository from "../repositories/task/TaskRepository";
 
 class Seed {
-  private userRepository;
+  private taskRepository;
 
   constructor() {
-    this.userRepository = new UserRepository();
+    this.taskRepository = new TaskRepository();
   }
 
   public async start() {
     try {
-      const [userCount] = await Promise.all([this.userRepository.count()]);
+      const [userCount] = await Promise.all([this.taskRepository.count()]);
 
-      //#region [Users]
+      //#region [Tasks]
       if (userCount === 0) {
-        console.info("Seeding users into the database");
+        console.info("Seeding tasks into the database");
 
-        await this.userRepository.insertMany(users);
-        console.info("UserRepository seeding completed successfully");
+        // await this.taskRepository.insertMany(tasks);
+        console.info("TaskRepository seeding completed successfully");
       }
       //#endregion
     } catch (err) {
