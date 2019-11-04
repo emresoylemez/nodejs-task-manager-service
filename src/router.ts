@@ -1,8 +1,10 @@
 import { Router } from "express";
+import authMiddleware from "@ylz/auth-middleware";
 
 import userRouter from "./controllers/task/routes";
 
 import * as appInfo from "pjson";
+
 /**
  * @swagger
  * securityDefinitions:
@@ -12,6 +14,7 @@ import * as appInfo from "pjson";
  *    name: Authorization
  */
 const router = Router();
+
 //#region [swagger: /health-check]
 /**
  * @swagger
@@ -78,6 +81,6 @@ router.get("/version", (req, res) => {
 });
 
 // mount routes for
-router.use("/tasks", userRouter);
+router.use("/tasks", authMiddleware, userRouter);
 
 export default router;
